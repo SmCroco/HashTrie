@@ -15,15 +15,18 @@ public:
 	Trie();
 	~Trie();
 
-	bool insert(const wchar_t* character);
-
+	bool insert(char character);
 	void setWordEnd();
 
-	ST_trieNode* find(ST_trieNode* node);
+	int find(char character);
+
+	long getCount();
 
 private:
 	ST_trieNode * root;	// 树的根结点
 	ST_trieNode * word_end; // 用于构造词语时指向词语结尾标志
+
+	long count;
 };
 
 #endif /* TRIE_TRIE_H_ */

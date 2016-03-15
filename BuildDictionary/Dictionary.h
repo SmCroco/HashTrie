@@ -10,6 +10,7 @@
 
 #include "Trie.h"
 #include <string>
+#include <fstream>
 
 using namespace std;
 
@@ -21,8 +22,16 @@ public:
 	void InitDictionary(string path);
 	void InitDictionary();
 
-private:
+	void ReadFile(string path);
+	void ReadFile(const char* content, long length);
+
+public:
+	void continueMatchFile(char* word, int i);
+	void continueMatchContent(const char* content, long length, char* word, int i);
+
+public:
 	Trie* trie;
+	ifstream file;
 };
 
 #endif /* BUILDDICTIONARY_DICTIONARY_H_ */
