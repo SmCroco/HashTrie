@@ -137,11 +137,13 @@ void Dictionary::ReadFile(string path) {
 			}
 			}
 		}
+
+		file.close();
 	} else {
 		cout<<"读取文件内容失败"<<endl;
 	}
 
-	file.close();
+
 }
 
 /*

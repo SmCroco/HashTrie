@@ -28,9 +28,18 @@ int main() {
 	fileContent += "长春市长春药店铺面前方面馆（末尾逐字删除测试效果）";
 	fileContent += "中国人民银行决定，自2012年6月8日起下调金融机构人民币存贷款基准利率。金融机构一年期存款基准利率下调0.25个百分点，一年期贷款基准利率下调0.25个百分点；其他各档次存贷款基准利率及个人住房公积金存贷款利率相应调整。";
 
-	// 读取文件内容
-	dictionary.ReadFile(fileContent.c_str(), fileContent.length());
+	time_t begin, end;
 
+	begin = clock();
+
+	for (int i = 0; i < 1; i++) {
+		// 读取文件内容
+		dictionary.ReadFile(fileContent.c_str(), fileContent.length());
+	}
+
+	end = clock();
+
+	cout<<"runtime: "<<double(end-begin)/CLOCKS_PER_SEC<<endl;
 	Trie* t= dictionary.trie;
 
 	long count = t->getCount();
