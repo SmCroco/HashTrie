@@ -15,10 +15,10 @@ public:
 	Trie();
 	~Trie();
 
-	bool insert(char character);
+	bool insert(long key, int n, character* value);
 	void setWordEnd();
 
-	int find(char character);
+	int find(long key);
 
 	long getCount();
 

@@ -17,7 +17,12 @@ Trie::Trie() {
 	this->root->faile = (ST_trieNode*)0;
 	this->root->isEnd = false;
 	this->root->key = 0;
-	this->root->value = ' ';
+	this->root->value[0] = 0;
+	this->root->value[1] = 0;
+	this->root->value[2] = 0;
+	this->root->value[3] = 0;
+	this->root->value[4] = 0;
+	this->root->value[5] = 0;
 	this->root->parent = (ST_trieNode*)0;
 
 	this->word_end = root;
@@ -37,16 +42,17 @@ Trie::~Trie() {
  * @Description: 将关键词的中一个字插入trie树中的一个结点, 并标记关键词是否插入完成
  * @Return Value: 新开辟的节点则返回true，原来已经有的节点则返回false
  */
-bool Trie::insert(char character) {
+bool Trie::insert(long key, int n, character* value) {
 
-	long key = (long)character;
 	hash_map<long, ST_trieNode*>::iterator it;
 	it = word_end->hash.find(key);
 	if (it == word_end->hash.end()) {
 
 		ST_trieNode * node = new ST_trieNode();
 		node->key = key;
-		node->value = character;
+		for (int i=0; i<n; i++) {
+			node->value[0] = value[i].byChar;
+		}
 		node->isEnd = false;
 		node->parent = word_end;
 		node->faile = NULL;
@@ -70,9 +76,9 @@ bool Trie::insert(char character) {
  * 		1：返回1表示关键词结尾
  * 		2：表示查找到了，但还没有到词结尾
  */
-int Trie::find(char character) {
+int Trie::find(long key) {
 
-	ST_trieNode* value = word_end->hash[character];
+	ST_trieNode* value = word_end->hash[key];
 	if (value == NULL) {
 		word_end = root;
 		return 0;

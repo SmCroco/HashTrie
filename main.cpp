@@ -12,6 +12,13 @@
 using namespace std;
 
 int main() {
+//
+//	ifstream file("testFile.txt");
+//	string s;
+//	for(string s; getline(file, s);) {
+//		cout<<s<<endl;
+//	}
+//	file.close();
 
 	// 词库文件路径
 	string path = "common-1.txt";
@@ -32,9 +39,10 @@ int main() {
 
 	begin = clock();
 
-	for (int i = 0; i < 1; i++) {
+	for (int i = 0; i < 1000000; i++) {
 		// 读取文件内容
 		dictionary.ReadFile(fileContent.c_str(), fileContent.length());
+//		dictionary.ReadFile(filepath);
 	}
 
 	end = clock();

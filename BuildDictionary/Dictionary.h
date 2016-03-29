@@ -25,13 +25,16 @@ public:
 	void ReadFile(string path);
 	void ReadFile(const char* content, long length);
 
-public:
-	void continueMatchFile(char* word, int i);
-	void continueMatchContent(const char* content, long length, char* word, int i);
+private:
+	void continueMatchFile(string s, int i);
+	void continueMatchContent(const char* content, long length);
+	int getCharacterLen(character c);
 
 public:
 	Trie* trie;
 	ifstream file;
+
+	int sum;
 };
 
 #endif /* BUILDDICTIONARY_DICTIONARY_H_ */
